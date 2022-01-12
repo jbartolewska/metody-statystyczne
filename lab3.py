@@ -19,7 +19,13 @@ plt.title('PCA')
 plt.legend(handles=scatter.legend_elements()[0], labels=['Kama', 'Rosa', 'Canadian'], title='Variety of wheat')
 plt.show()
 
-# (3) sprawdzenie wkładu poszczególnych osi
+# (3) sprawdzenie wkładu poszczególnych osi (nowych!)
+# PCA ustala liczbę komponentów poprzez min(liczba wierszy, liczba kolumn)
+# i explained_variance_ratio_ tłumaczy jaki te nowe komponenty stworzone przez PCA mają wkład
+# nie można tego bezpośrednio odnieść do cech zadanych na początku
+# (to mówi nam, że PC1 explains ..%, PC2 ...)
+# natomiast w components_ można zobaczyć dalej jaki wkład w poszczególne te PCX mają początkowe cechy
+# https://stackoverflow.com/questions/50796024/feature-variable-importance-after-a-pca-analysis
 pca = PCA().fit(data.iloc[:, :-1])
 print(pca.explained_variance_ratio_)
 
